@@ -34,7 +34,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaConUnCuadrado()
         {
-            var cuadrados = new List<IFormaGeometrica> { new Cuadrado(5) };
+            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaCuadrado(5) };
 
             var resumen = ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano);
 
@@ -46,9 +46,9 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var cuadrados = new List<IFormaGeometrica>
             {
-                new Cuadrado(5),
-                new Cuadrado(1),
-                new Cuadrado(3)
+                new FormaGeometricaCuadrado(5),
+                new FormaGeometricaCuadrado(1),
+                new FormaGeometricaCuadrado(3)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Ingles);
@@ -61,20 +61,20 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<IFormaGeometrica>
             {
-                new Cuadrado (5),
+                new FormaGeometricaCuadrado (5),
                 new Circulo( 3),
-                new TrianguloEquilatero( 4),
-                new Cuadrado( 2),
-                new TrianguloEquilatero(9),
+                new FormaGeometricaTrianguloEquilatero( 4),
+                new FormaGeometricaCuadrado( 2),
+                new FormaGeometricaTrianguloEquilatero(9),
                 new Circulo(2.75m),
-                new TrianguloEquilatero( 4.2m),
-                 new Trapecio(10,12,7,7,11)
+                new FormaGeometricaTrianguloEquilatero( 4.2m),
+                new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(formas, IdiomaEnum.Ingles);
 
             Assert.AreEqual(
-                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 13,01 | Perimeter 18,06 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>1 trapeze | Area 121 | Perimeter 36 <br/>TOTAL:<br/>8 shapes Perimeter 133,66 Area 212,65",
+                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 13,01 | Perimeter 18,06 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>1 trapeze | Area 16 | Perimeter 16,5 <br/>TOTAL:<br/>8 shapes Perimeter 114,16 Area 107,65",
                 resumen);
         }
 
@@ -83,32 +83,21 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<IFormaGeometrica>
             {
-                new Cuadrado(5),
+                new FormaGeometricaCuadrado(5),
                 new Circulo(3),
-                new TrianguloEquilatero(4),
-                new Cuadrado(2),
-                new TrianguloEquilatero(9),
+                new FormaGeometricaTrianguloEquilatero(4),
+                new FormaGeometricaCuadrado(2),
+                new FormaGeometricaTrianguloEquilatero(9),
                 new Circulo(2.75m),
-                new TrianguloEquilatero(4.2m),
-                new Trapecio(10,12,7,7,11)
+                new FormaGeometricaTrianguloEquilatero(4.2m),
+                new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(formas, IdiomaEnum.Castellano);
 
             Assert.AreEqual(
-                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>1 Trapecio | Area 121 | Perimetro 36 <br/>TOTAL:<br/>8 formas Perimetro 133,66 Area 212,65",
+                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>1 Trapecio | Area 16 | Perimetro 16,5 <br/>TOTAL:<br/>8 formas Perimetro 114,16 Area 107,65",
                 resumen);
-        }
-
-
-        [TestCase]
-        public void TestResumenListaConUnTrapecio()
-        {
-            var cuadrados = new List<IFormaGeometrica> { new Trapecio(10,12,7,7,11) };
-
-            var resumen = ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano);
-
-            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Area 121 | Perimetro 36 <br/>TOTAL:<br/>1 formas Perimetro 36 Area 121", resumen);
         }
 
         [TestCase]
@@ -116,21 +105,50 @@ namespace DevelopmentChallenge.Data.Tests
         {
             var formas = new List<IFormaGeometrica>
             {
-                new Cuadrado(5),
+                new FormaGeometricaCuadrado(5),
                 new Circulo(3),
-                new TrianguloEquilatero(4),
-                new Cuadrado(2),
-                new TrianguloEquilatero(9),
+                new FormaGeometricaTrianguloEquilatero(4),
+                new FormaGeometricaCuadrado(2),
+                new FormaGeometricaTrianguloEquilatero(9),
                 new Circulo(2.75m),
-                new TrianguloEquilatero(4.2m),
-                new Trapecio(10,12,7,7,11)
+                new FormaGeometricaTrianguloEquilatero(4.2m),
+                new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(formas, IdiomaEnum.Italiano);
 
             Assert.AreEqual(
-                "<h1>Report di forme</h1>2 Quadrati | Area 29 | Perimetro 28 <br/>2 Cerchi | Area 13,01 | Perimetro 18,06 <br/>3 Triangoli | Area 49,64 | Perimetro 51,6 <br/>1 Trapezio | Area 121 | Perimetro 36 <br/>TOTALE:<br/>8 Forme Perimetro 133,66 Area 212,65",
+                "<h1>Report di forme</h1>2 Quadrati | Area 29 | Perimetro 28 <br/>2 Cerchi | Area 13,01 | Perimetro 18,06 <br/>3 Triangoli | Area 49,64 | Perimetro 51,6 <br/>1 Trapezio | Area 16 | Perimetro 16,5 <br/>TOTALE:<br/>8 Forme Perimetro 114,16 Area 107,65",
                 resumen);
         }
+
+        [TestCase]
+        public void TestResumenListaConUnTrapecio()
+        {
+            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m) };
+
+            var resumen = ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano);
+
+            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Area 16 | Perimetro 16,5 <br/>TOTAL:<br/>1 formas Perimetro 16,5 Area 16", resumen);
+        }
+
+
+
+        [TestCase]
+        public void TestResumenListaCuadradoNoValido()
+        {
+            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaCuadrado(-5) };
+            Assert.AreEqual("<h1>Hay formas que no cumplen sus condiciones geometricas</h1>",
+                ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano));
+        }
+
+        [TestCase]
+        public void TestResumenListaTrapecioRectanguloNoValido()
+        {
+            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaTrapecioRectangulo(1,1,100,3) };
+            Assert.AreEqual("<h1>Hay formas que no cumplen sus condiciones geometricas</h1>",
+                ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano));
+        }
+
     }
 }

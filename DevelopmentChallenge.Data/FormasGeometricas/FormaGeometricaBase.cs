@@ -27,6 +27,11 @@ namespace DevelopmentChallenge.Data.FormasGeometricas
         {
             return _ordenImpresion;
         }
+
+        public virtual bool VerificarFormaGeometrica()
+        {
+            return _lado > 0;
+        }
     }
 
 

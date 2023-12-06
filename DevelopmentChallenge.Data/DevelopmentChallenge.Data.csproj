@@ -44,17 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormasGeometricas\Ciruclo.cs" />
+    <Compile Include="FormasGeometricas\FormaGeometricaCiruclo.cs" />
     <Compile Include="Classes\Class1.cs" />
-    <Compile Include="FormasGeometricas\Cuadrado.cs" />
+    <Compile Include="FormasGeometricas\FormaGeometricaCuadrado.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="ReporteFormaGeometrica.cs" />
     <Compile Include="FormasGeometricas\FormaGeometricaBase.cs" />
     <Compile Include="FormasGeometricas\FormaGeometricaVO.cs" />
     <Compile Include="Enum\IdiomaEnum.cs" />
     <Compile Include="FormasGeometricas\IFormaGeometrica.cs" />
-    <Compile Include="FormasGeometricas\Trapecio.cs" />
-    <Compile Include="FormasGeometricas\TrianguloEquilatero.cs" />
+    <Compile Include="FormasGeometricas\FormaGeometricaTrapecioRectangulo.cs" />
+    <Compile Include="FormasGeometricas\FormaGeometricaTrianguloEquilatero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\TextosIdiomas.cs" />
     <Compile Include="Resources\textos.it.Designer.cs">

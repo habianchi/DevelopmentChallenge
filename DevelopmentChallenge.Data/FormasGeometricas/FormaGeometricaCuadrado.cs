@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.FormasGeometricas
 {
-    public class Cuadrado : FormaGeometricaBase
+    public class FormaGeometricaCuadrado : FormaGeometricaBase
     {
-        public Cuadrado(decimal lado) : base(lado,1) { }
+        public FormaGeometricaCuadrado(decimal lado) : base(lado,1) { }
 
         public override decimal CalcularArea() => _lado * _lado;
 

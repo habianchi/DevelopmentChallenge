@@ -13,5 +13,7 @@ namespace DevelopmentChallenge.Data.FormasGeometricas
         string ObtenerNombre(int cantidad);
 
         int ObtenerOrdenImpresion();
+
+        bool VerificarFormaGeometrica();
     }
 }

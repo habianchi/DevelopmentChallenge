@@ -8,7 +8,7 @@ namespace DevelopmentChallenge.Data.FormasGeometricas
 {
     public class Circulo : FormaGeometricaBase
     {
-        public Circulo(decimal lado) : base(lado,2) { }
+        public Circulo(decimal radio) : base(radio, 2) { }
         public override decimal CalcularArea()
         {
             return (decimal)Math.PI * (_lado / 2) * (_lado / 2);

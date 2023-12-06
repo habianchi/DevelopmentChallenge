@@ -135,6 +135,9 @@
   <data name="Formas" xml:space="preserve">
     <value>Forme</value>
   </data>
+  <data name="FormasGeometricasNoValidas" xml:space="preserve">
+    <value>Ci sono forme che non soddisfano le loro condizioni geometriche</value>
+  </data>
   <data name="ListaVaciaDeFormas" xml:space="preserve">
     <value>Lista vuota di forme!</value>
   </data>

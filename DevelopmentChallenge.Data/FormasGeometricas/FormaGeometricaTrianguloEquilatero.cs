@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevelopmentChallenge.Data.FormasGeometricas
 {
-    public class TrianguloEquilatero : FormaGeometricaBase
+    public class FormaGeometricaTrianguloEquilatero : FormaGeometricaBase
     {
 
-        public TrianguloEquilatero(decimal lado) : base(lado,3) { }
+        public FormaGeometricaTrianguloEquilatero(decimal lado) : base(lado,3) { }
         public override decimal CalcularArea()
         {
            return  ((decimal)Math.Sqrt(3) / 4) * _lado * _lado;
@@ -27,5 +27,7 @@ namespace DevelopmentChallenge.Data.FormasGeometricas
             else
                 return "Triangulos";
         }
+
+       
     }
 }

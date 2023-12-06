@@ -37,11 +37,19 @@ namespace DevelopmentChallenge.Data
             {
                 sb.Append($"<h1>{TextosIdiomas.ObtenerTexto("ListaVaciaDeFormas", lenguaje)}</h1>");
             }
+            else if (formasGeometricas.Any(x => !x.VerificarFormaGeometrica()))
+            {
+                sb.Append($"<h1>{TextosIdiomas.ObtenerTexto("FormasGeometricasNoValidas", lenguaje)}</h1>");
+            }
             else
             {
+
                 // Hay por lo menos una forma
                 // HEADER
                 sb.Append($"<h1>{TextosIdiomas.ObtenerTexto("ReporteDeFormas", lenguaje)}</h1>");
+
+
+               
 
                 var formasGeometricasAgrupadas = ObtenerDatosFormasGeometricasAgrupadas(formasGeometricas);
 
