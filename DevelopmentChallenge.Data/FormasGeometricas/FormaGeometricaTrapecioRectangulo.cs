@@ -12,12 +12,24 @@ namespace DevelopmentChallenge.Data.FormasGeometricas
         protected readonly decimal _baseMenor;
         protected readonly decimal _altura;
 
-        public FormaGeometricaTrapecioRectangulo(decimal baseMayor, decimal baseMenor, decimal altura, decimal ladoDiagonal)
-            : base(ladoDiagonal, 4)
+
+
+        public FormaGeometricaTrapecioRectangulo(decimal baseMayor, decimal baseMenor, decimal altura)
+            : base(CalcularLado(baseMayor, baseMenor, altura), 4)
         {
             _baseMayor = baseMayor;
             _baseMenor = baseMenor;
             _altura = altura;
+
+           
+
+        }
+
+        private static decimal CalcularLado(decimal baseMayor, decimal baseMenor, decimal altura)
+        {
+            var aux = baseMayor - baseMenor;
+
+            return (decimal)Math.Sqrt(Math.Pow((double)aux, 2) + Math.Pow((double)altura, 2));
         }
 
         public override decimal CalcularArea()
@@ -27,8 +39,7 @@ namespace DevelopmentChallenge.Data.FormasGeometricas
 
         public override decimal CalcularPerimetro()
         {
-            var ladoDiagonal = _lado;
-            return _baseMayor + _baseMenor + _altura + ladoDiagonal; ;
+            return _baseMayor + _baseMenor + _altura + _lado; 
         }
 
         public override string ObtenerNombre(int cantidad)

@@ -68,13 +68,13 @@ namespace DevelopmentChallenge.Data.Tests
                 new FormaGeometricaTrianguloEquilatero(9),
                 new Circulo(2.75m),
                 new FormaGeometricaTrianguloEquilatero( 4.2m),
-                new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m)
+                new FormaGeometricaTrapecioRectangulo(5, 3, 4)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(formas, IdiomaEnum.Ingles);
 
             Assert.AreEqual(
-                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 13,01 | Perimeter 18,06 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>1 trapeze | Area 16 | Perimeter 16,5 <br/>TOTAL:<br/>8 shapes Perimeter 114,16 Area 107,65",
+                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 13,01 | Perimeter 18,06 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>1 trapeze | Area 16 | Perimeter 16,47 <br/>TOTAL:<br/>8 shapes Perimeter 114,14 Area 107,65",
                 resumen);
         }
 
@@ -90,13 +90,13 @@ namespace DevelopmentChallenge.Data.Tests
                 new FormaGeometricaTrianguloEquilatero(9),
                 new Circulo(2.75m),
                 new FormaGeometricaTrianguloEquilatero(4.2m),
-                new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m)
+                new FormaGeometricaTrapecioRectangulo(5, 3, 4)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(formas, IdiomaEnum.Castellano);
 
             Assert.AreEqual(
-                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>1 Trapecio | Area 16 | Perimetro 16,5 <br/>TOTAL:<br/>8 formas Perimetro 114,16 Area 107,65",
+                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>1 Trapecio | Area 16 | Perimetro 16,47 <br/>TOTAL:<br/>8 formas Perimetro 114,14 Area 107,65",
                 resumen);
         }
 
@@ -112,24 +112,24 @@ namespace DevelopmentChallenge.Data.Tests
                 new FormaGeometricaTrianguloEquilatero(9),
                 new Circulo(2.75m),
                 new FormaGeometricaTrianguloEquilatero(4.2m),
-                new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m)
+                new FormaGeometricaTrapecioRectangulo(5, 3, 4)
             };
 
             var resumen = ReporteFormaGeometrica.Imprimir(formas, IdiomaEnum.Italiano);
 
             Assert.AreEqual(
-                "<h1>Report di forme</h1>2 Quadrati | Area 29 | Perimetro 28 <br/>2 Cerchi | Area 13,01 | Perimetro 18,06 <br/>3 Triangoli | Area 49,64 | Perimetro 51,6 <br/>1 Trapezio | Area 16 | Perimetro 16,5 <br/>TOTALE:<br/>8 Forme Perimetro 114,16 Area 107,65",
+                "<h1>Report di forme</h1>2 Quadrati | Area 29 | Perimetro 28 <br/>2 Cerchi | Area 13,01 | Perimetro 18,06 <br/>3 Triangoli | Area 49,64 | Perimetro 51,6 <br/>1 Trapezio | Area 16 | Perimetro 16,47 <br/>TOTALE:<br/>8 Forme Perimetro 114,14 Area 107,65",
                 resumen);
         }
 
         [TestCase]
         public void TestResumenListaConUnTrapecio()
         {
-            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaTrapecioRectangulo(5, 3, 4, 4.5m) };
+            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaTrapecioRectangulo(5, 3, 4) };
 
             var resumen = ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano);
 
-            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Area 16 | Perimetro 16,5 <br/>TOTAL:<br/>1 formas Perimetro 16,5 Area 16", resumen);
+            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Trapecio | Area 16 | Perimetro 16,47 <br/>TOTAL:<br/>1 formas Perimetro 16,47 Area 16", resumen);
         }
 
 
@@ -145,7 +145,7 @@ namespace DevelopmentChallenge.Data.Tests
         [TestCase]
         public void TestResumenListaTrapecioRectanguloNoValido()
         {
-            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaTrapecioRectangulo(1,1,100,3) };
+            var cuadrados = new List<IFormaGeometrica> { new FormaGeometricaTrapecioRectangulo(1,-1,100) };
             Assert.AreEqual("<h1>Hay formas que no cumplen sus condiciones geometricas</h1>",
                 ReporteFormaGeometrica.Imprimir(cuadrados, IdiomaEnum.Castellano));
         }
