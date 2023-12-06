@@ -67,3 +67,6 @@ _ReSharper*/
 
 #Test files
 *.testsettings
+
+# Ignorar la carpeta packages de NuGet
+packages/
