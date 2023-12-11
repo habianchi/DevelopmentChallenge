@@ -49,52 +49,35 @@ namespace DevelopmentChallenge.Data
                 sb.Append($"<h1>{TextosIdiomas.ObtenerTexto("ReporteDeFormas", lenguaje)}</h1>");
 
 
-               
+                var formasGeometricasAgrupadasPorTipo = formasGeometricas.GroupBy(x => x.GetType()).OrderBy(x=>x.First().ObtenerOrdenImpresion());
 
-                var formasGeometricasAgrupadas = ObtenerDatosFormasGeometricasAgrupadas(formasGeometricas);
-
-                foreach (var figura in formasGeometricasAgrupadas.OrderBy(x => x.OrdenImpresion))
+                foreach (var f in formasGeometricasAgrupadasPorTipo)
                 {
-                    sb.Append(ObtenerLineasFiguras(figura));
+                    sb.Append(ObtenerLineasFiguras(f.ToList()));
+                    
                 }
-              
-
+            
                 // FOOTER
                 sb.Append($"{TextosIdiomas.ObtenerTexto("Total", lenguaje)}:<br/>");
-                sb.Append(formasGeometricasAgrupadas.Sum(x=>x.Cantidad) + " " + TextosIdiomas.ObtenerTexto("Formas", lenguaje) + " ") ;
-                sb.Append($"{TextosIdiomas.ObtenerTexto("Perimetro", lenguaje)} {formasGeometricasAgrupadas.Sum(x => x.Perimetro).ToString("#.##")} ");
-                sb.Append($"{TextosIdiomas.ObtenerTexto("Area", lenguaje)} " + formasGeometricasAgrupadas.Sum(x=>x.Area).ToString("#.##"));
+
+
+                sb.Append(formasGeometricasAgrupadasPorTipo.Sum(x=>x.Count())+ " " + TextosIdiomas.ObtenerTexto("Formas", lenguaje) + " ");
+                sb.Append($"{TextosIdiomas.ObtenerTexto("Perimetro", lenguaje)} {formasGeometricasAgrupadasPorTipo.Sum(x => x.Sum(y=>y.CalcularPerimetro())).ToString("#.##")} ");
+                sb.Append($"{TextosIdiomas.ObtenerTexto("Area", lenguaje)} " + formasGeometricasAgrupadasPorTipo.Sum(x => x.Sum(y => y.CalcularArea())).ToString("#.##"));
             }
 
             return sb.ToString();
         }
 
-        private static List<FormaGeometricaVO> ObtenerDatosFormasGeometricasAgrupadas(List<IFormaGeometrica> formasGeometricas)
+     
+
+      
+
+        private static string ObtenerLineasFiguras(List<IFormaGeometrica> formasGeometricas)
         {
-            var result = new List<FormaGeometricaVO>();
+            var count = formasGeometricas.Count();
+            return $"{count } {TextosIdiomas.ObtenerTexto(formasGeometricas.First().ObtenerNombre(count), lenguaje)} | {TextosIdiomas.ObtenerTexto("Area", lenguaje)} {formasGeometricas.Sum(x=>x.CalcularArea()):#.##} | {TextosIdiomas.ObtenerTexto("Perimetro", lenguaje)} {formasGeometricas.Sum(x => x.CalcularPerimetro()):#.##} <br/>";
 
-            var tiposFormasGeometricas = formasGeometricas.Select(f => f.GetType()).Distinct();
-
-            foreach (var tipoFromaGeometrica in tiposFormasGeometricas)
-            {
-
-                var formasGeometricasPorTipo = formasGeometricas.Where(f => f.GetType() == tipoFromaGeometrica);
-
-                var cantidad = formasGeometricasPorTipo.Count();
-                var nombre = formasGeometricasPorTipo.First().ObtenerNombre(cantidad);
-                var area = formasGeometricasPorTipo.Sum(f => f.CalcularArea());
-                var perimetro = formasGeometricasPorTipo.Sum(f => f.CalcularPerimetro());
-                var ordernImpresion = formasGeometricasPorTipo.First().ObtenerOrdenImpresion();
-                result.Add(new FormaGeometricaVO { Cantidad = cantidad, Area = area, Perimetro =perimetro, Nombre = nombre, OrdenImpresion = ordernImpresion });
-            }
-
-            return result;
-        }
-
-        private static string ObtenerLineasFiguras(FormaGeometricaVO formaGeometrica)
-        {
-            return $"{formaGeometrica.Cantidad } {TextosIdiomas.ObtenerTexto(formaGeometrica.Nombre, lenguaje)} | {TextosIdiomas.ObtenerTexto("Area", lenguaje)} {formaGeometrica.Area:#.##} | {TextosIdiomas.ObtenerTexto("Perimetro", lenguaje)} {formaGeometrica.Perimetro:#.##} <br/>";
-        
         }
 
     }

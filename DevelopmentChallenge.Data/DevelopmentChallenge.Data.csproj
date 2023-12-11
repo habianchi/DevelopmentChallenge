@@ -50,7 +50,6 @@
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="ReporteFormaGeometrica.cs" />
     <Compile Include="FormasGeometricas\FormaGeometricaBase.cs" />
-    <Compile Include="FormasGeometricas\FormaGeometricaVO.cs" />
     <Compile Include="Enum\IdiomaEnum.cs" />
     <Compile Include="FormasGeometricas\IFormaGeometrica.cs" />
     <Compile Include="FormasGeometricas\FormaGeometricaTrapecioRectangulo.cs" />
